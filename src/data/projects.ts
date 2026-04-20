@@ -3,7 +3,7 @@ import neuralSketchImg from '../assets/Generated Image February 07, 2026 - 5_00P
 import parentsHandbookImg from '../assets/demo1.png'
 import dashboardImg from '../assets/dashboard_overview.jpg'
 import easyNoteImg from '../assets/mockup1.png'
-import antigravityBuddyImg from '../assets/antigravity_bot.png'
+import antigravityBuddyImg from '../assets/alien-transparent.png'
 
 export type ProjectCategory = 'engineering' | 'design'
 
