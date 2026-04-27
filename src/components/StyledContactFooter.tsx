@@ -57,7 +57,7 @@ export function StyledContactFooter() {
                 </div>
             </div>
             
-            <h2 align="center" style={{ marginTop: '5rem', fontWeight: 500, color: '#64748b', fontSize: '1.4rem', letterSpacing: '0.02em' }}>
+            <h2 style={{ textAlign: 'center', marginTop: '5rem', fontWeight: 500, color: '#64748b', fontSize: '1.4rem', letterSpacing: '0.02em' }}>
                 {language === 'zh' ? '"预测未来最好的方式，就是去创造它。"' : '"The best way to predict the future is to build it."'}
             </h2>
         </footer>
