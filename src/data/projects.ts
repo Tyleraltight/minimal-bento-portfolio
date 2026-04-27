@@ -1,5 +1,4 @@
 import voxelImg from '../assets/LOGO.jpg'
-import neuralSketchImg from '../assets/Generated Image February 07, 2026 - 5_00PM.png'
 import parentsHandbookImg from '../assets/demo1.png'
 import dashboardImg from '../assets/dashboard_overview.jpg'
 import easyNoteImg from '../assets/mockup1.png'
