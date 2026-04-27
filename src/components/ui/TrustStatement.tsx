@@ -1,20 +1,24 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "../../contexts/LanguageContext";
 
-const words = ["typography", "rhythm", "motion", "responsiveness"];
-// The longest word determines the reserved width
-const longestWord = words.reduce((a, b) => (a.length > b.length ? a : b));
+const wordsEn = ["typography", "rhythm", "motion", "responsiveness"];
+const wordsZh = ["排版细节", "视觉节奏", "交互动效", "响应体验"];
 
 export function TrustStatement() {
+  const { language } = useLanguage();
   const [index, setIndex] = useState(0);
+
+  const currentWords = language === 'zh' ? wordsZh : wordsEn;
+  const longestWord = currentWords.reduce((a, b) => (a.length > b.length ? a : b));
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % words.length);
+      setIndex((prevIndex) => (prevIndex + 1) % currentWords.length);
     }, 2500);
     return () => clearInterval(interval);
-  }, []);
+  }, [currentWords.length]);
 
   return (
     <p style={{
@@ -25,7 +29,7 @@ export function TrustStatement() {
       letterSpacing: "inherit",
       fontWeight: "inherit",
     }}>
-      I care about the details that compound into trust{" "}
+      {language === 'zh' ? '我专注于那些能建立起信任的' : 'I care about the details that compound into trust '}
       <span style={{
         position: "relative",
         display: "inline-flex",
@@ -46,7 +50,7 @@ export function TrustStatement() {
         {/* Animated word, absolutely positioned on top of the spacer */}
         <AnimatePresence mode="wait">
           <motion.span
-            key={words[index]}
+            key={currentWords[index]}
             initial={{ opacity: 0, y: 8, filter: "blur(6px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             exit={{ opacity: 0, y: -8, filter: "blur(6px)" }}
@@ -62,11 +66,9 @@ export function TrustStatement() {
               whiteSpace: "nowrap",
             }}
           >
-            {words[index]}
+            {currentWords[index]}
           </motion.span>
         </AnimatePresence>
-
-
       </span>
     </p>
   );

@@ -4,9 +4,12 @@ import { Container } from '../components/ui/Container'
 import { Section } from '../components/ui/Section'
 import { profileData } from '../data/profile'
 import { motion } from 'framer-motion'
+import { useLanguage } from '../contexts/LanguageContext'
 
 export function AboutSection() {
-  const { now } = profileData
+  const { language } = useLanguage()
+  const data = language === 'zh' ? profileData.zh : profileData
+  const { now } = data
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -30,8 +33,8 @@ export function AboutSection() {
   return (
     <Section
       id="about"
-      title="About"
-      subtitle="Profile"
+      title={language === 'zh' ? '关于' : 'About'}
+      subtitle={language === 'zh' ? '个人简介' : 'Profile'}
       className="about-section"
     >
       <Container>

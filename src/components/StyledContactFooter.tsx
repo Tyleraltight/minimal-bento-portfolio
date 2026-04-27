@@ -1,4 +1,8 @@
+import { useLanguage } from '../contexts/LanguageContext'
+
 export function StyledContactFooter() {
+    const { language } = useLanguage()
+
     return (
         <footer className="styled-footer" id="contact">
             <div className="styled-footer-container">
@@ -6,9 +10,13 @@ export function StyledContactFooter() {
                     
                     {/* Left column */}
                     <div className="footer-left">
-                        <h2 className="footer-card-heading">Have something in mind?</h2>
+                        <h2 className="footer-card-heading">
+                            {language === 'zh' ? '有绝妙的想法？' : 'Have something in mind?'}
+                        </h2>
                         <p className="footer-card-subtitle">
-                            Share a brief about your product. Let's work together to bring your vision to life.
+                            {language === 'zh' 
+                                ? '向我简单介绍一下你的产品。让我们合作，将你的愿景变成现实。' 
+                                : "Share a brief about your product. Let's work together to bring your vision to life."}
                         </p>
                         <a href="mailto:chuzihang456@gmail.com" className="footer-email-capsule">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -21,7 +29,7 @@ export function StyledContactFooter() {
 
                     {/* Right column */}
                     <div className="footer-right">
-                        <span className="footer-connect-label">Connect</span>
+                        <span className="footer-connect-label">{language === 'zh' ? '保持联系' : 'Connect'}</span>
                         <div className="footer-connect-icons">
                             <a
                                 href="https://github.com/Tyleraltight"
@@ -48,6 +56,10 @@ export function StyledContactFooter() {
 
                 </div>
             </div>
+            
+            <h2 align="center" style={{ marginTop: '5rem', fontWeight: 500, color: '#64748b', fontSize: '1.4rem', letterSpacing: '0.02em' }}>
+                {language === 'zh' ? '"预测未来最好的方式，就是去创造它。"' : '"The best way to predict the future is to build it."'}
+            </h2>
         </footer>
     )
 }

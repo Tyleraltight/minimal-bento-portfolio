@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import type { Project } from '../data/projects'
 import { Body, MetaText } from './ui/Typography'
+import { useLanguage } from '../contexts/LanguageContext'
 
 type Props = {
     project: Project
@@ -30,11 +31,22 @@ const cardVariants = {
 }
 
 export function ProjectDetailModal({ project, onClose }: Props) {
+    const { language } = useLanguage()
+    
+    // Resolve localized strings
+    const title = language === 'zh' && project.zh?.title ? project.zh.title : project.title
+    const subtitle = language === 'zh' && project.zh?.subtitle ? project.zh.subtitle : project.subtitle
+    const description = language === 'zh' && project.zh?.description ? project.zh.description : project.description
+    const concept = language === 'zh' && project.zh?.concept ? project.zh.concept : project.concept
+    const workflow = language === 'zh' && project.zh?.workflow ? project.zh.workflow : project.workflow
+    const useCase = language === 'zh' && project.zh?.useCase ? project.zh.useCase : project.useCase
+    const intent = language === 'zh' && project.zh?.intent ? project.zh.intent : project.intent
+
     const hasVideo = !!project.videoUrl
     const hasImage = !!project.image
     const hasMedia = hasVideo || hasImage
-    const hasCaseStudy = !!(project.concept || project.workflow || project.useCase)
-    const hasLegacyCaseStudy = !!(project.intent || project.workflow || project.toolsUsed)
+    const hasCaseStudy = !!(concept || workflow || useCase)
+    const hasLegacyCaseStudy = !!(intent || workflow || project.toolsUsed)
 
     // Lock body scroll when modal is open
     useEffect(() => {
@@ -101,33 +113,33 @@ export function ProjectDetailModal({ project, onClose }: Props) {
 
                         <div className="modal-body">
                             <MetaText>
-                                {project.subtitle} · AI Visual
+                                {subtitle} · {language === 'zh' ? 'AI 视觉' : 'AI Visual'}
                             </MetaText>
-                            <h2 className="modal-title">{project.title}</h2>
-                            <Body>{project.description}</Body>
+                            <h2 className="modal-title">{title}</h2>
+                            <Body>{description}</Body>
 
                             {hasCaseStudy && (
                                 <div className="modal-case-study">
-                                    <MetaText className="modal-case-study-label">Case Study</MetaText>
+                                    <MetaText className="modal-case-study-label">{language === 'zh' ? '案例研究' : 'Case Study'}</MetaText>
 
-                                    {project.concept && (
+                                    {concept && (
                                         <div className="modal-field">
-                                            <span className="modal-field-label">Concept</span>
-                                            <Body>{project.concept}</Body>
+                                            <span className="modal-field-label">{language === 'zh' ? '核心概念' : 'Concept'}</span>
+                                            <Body>{concept}</Body>
                                         </div>
                                     )}
 
-                                    {project.workflow && (
+                                    {workflow && (
                                         <div className="modal-field">
-                                            <span className="modal-field-label">Workflow</span>
-                                            <Body>{project.workflow}</Body>
+                                            <span className="modal-field-label">{language === 'zh' ? '工作流' : 'Workflow'}</span>
+                                            <Body>{workflow}</Body>
                                         </div>
                                     )}
 
-                                    {project.useCase && (
+                                    {useCase && (
                                         <div className="modal-field">
-                                            <span className="modal-field-label">Use Case</span>
-                                            <Body>{project.useCase}</Body>
+                                            <span className="modal-field-label">{language === 'zh' ? '应用场景' : 'Use Case'}</span>
+                                            <Body>{useCase}</Body>
                                         </div>
                                     )}
 
@@ -157,34 +169,34 @@ export function ProjectDetailModal({ project, onClose }: Props) {
 
                         <div className="modal-body">
                             <MetaText>
-                                {project.subtitle} · {project.kind === 'ai-visual' ? 'AI Visual' : 'Project'}
+                                {subtitle} · {project.kind === 'ai-visual' ? (language === 'zh' ? 'AI 视觉' : 'AI Visual') : (language === 'zh' ? '项目' : 'Project')}
                             </MetaText>
-                            <h2 className="modal-title">{project.title}</h2>
-                            <Body>{project.description}</Body>
+                            <h2 className="modal-title">{title}</h2>
+                            <Body>{description}</Body>
 
                             {/* Case study fields (concept/workflow/useCase) */}
                             {hasCaseStudy && (
                                 <div className="modal-case-study">
-                                    <MetaText className="modal-case-study-label">Case Study</MetaText>
+                                    <MetaText className="modal-case-study-label">{language === 'zh' ? '案例研究' : 'Case Study'}</MetaText>
 
-                                    {project.concept && (
+                                    {concept && (
                                         <div className="modal-field">
-                                            <span className="modal-field-label">Concept</span>
-                                            <Body>{project.concept}</Body>
+                                            <span className="modal-field-label">{language === 'zh' ? '核心概念' : 'Concept'}</span>
+                                            <Body>{concept}</Body>
                                         </div>
                                     )}
 
-                                    {project.workflow && (
+                                    {workflow && (
                                         <div className="modal-field">
-                                            <span className="modal-field-label">Workflow</span>
-                                            <Body>{project.workflow}</Body>
+                                            <span className="modal-field-label">{language === 'zh' ? '工作流' : 'Workflow'}</span>
+                                            <Body>{workflow}</Body>
                                         </div>
                                     )}
 
-                                    {project.useCase && (
+                                    {useCase && (
                                         <div className="modal-field">
-                                            <span className="modal-field-label">Use Case</span>
-                                            <Body>{project.useCase}</Body>
+                                            <span className="modal-field-label">{language === 'zh' ? '应用场景' : 'Use Case'}</span>
+                                            <Body>{useCase}</Body>
                                         </div>
                                     )}
 
@@ -203,25 +215,25 @@ export function ProjectDetailModal({ project, onClose }: Props) {
                             {/* Legacy case study fields (intent/toolsUsed) */}
                             {!hasCaseStudy && hasLegacyCaseStudy && (
                                 <div className="modal-case-study">
-                                    <MetaText className="modal-case-study-label">Case Study</MetaText>
+                                    <MetaText className="modal-case-study-label">{language === 'zh' ? '案例研究' : 'Case Study'}</MetaText>
 
-                                    {project.intent && (
+                                    {intent && (
                                         <div className="modal-field">
-                                            <span className="modal-field-label">Intent</span>
-                                            <Body>{project.intent}</Body>
+                                            <span className="modal-field-label">{language === 'zh' ? '目标' : 'Intent'}</span>
+                                            <Body>{intent}</Body>
                                         </div>
                                     )}
 
-                                    {project.workflow && (
+                                    {workflow && (
                                         <div className="modal-field">
-                                            <span className="modal-field-label">Workflow</span>
-                                            <Body>{project.workflow}</Body>
+                                            <span className="modal-field-label">{language === 'zh' ? '工作流' : 'Workflow'}</span>
+                                            <Body>{workflow}</Body>
                                         </div>
                                     )}
 
                                     {project.toolsUsed && project.toolsUsed.length > 0 && (
                                         <div className="modal-field">
-                                            <span className="modal-field-label">Tools</span>
+                                            <span className="modal-field-label">{language === 'zh' ? '使用工具' : 'Tools'}</span>
                                             <div className="modal-tool-tags">
                                                 {project.toolsUsed.map((tool) => (
                                                     <span key={tool} className="modal-tool-tag">
