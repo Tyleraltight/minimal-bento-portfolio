@@ -5,6 +5,9 @@ import dashboardImg from '../assets/dashboard_overview.jpg'
 import easyNoteImg from '../assets/mockup1.png'
 import antigravityBuddyImg from '../assets/alien-padded.png'
 import alineHeroImg from '../assets/aline-hero.png'
+import rainbowByteImg from '../assets/rainbow-byte.png'
+import englishImg from '../assets/english.png'
+import apocalypticBehemothImg from '../assets/apocalyptic-behemoth.png'
 
 export type ProjectCategory = 'engineering' | 'design'
 
@@ -141,49 +144,53 @@ export const engineeringProjects: Project[] = [
 // Row 2 — Design & AI Visuals
 export const designProjects: Project[] = [
   {
-    id: 'ai-fashion-video',
+    id: 'rainbow-byte-mascot',
     category: 'design',
-    kind: 'ai-visual',
-    title: 'Cinematic AI Fashion Exploration',
-    subtitle: 'AI Video',
+    kind: 'case-study',
+    title: 'Rainbow Byte: Pixel Joy',
+    subtitle: 'Mascot Branding',
     description:
-      'A cinematic exploration of AI-generated high-fashion aesthetics and material textures.',
-    stack: ['Midjourney v6', 'Google Veo'],
-    tags: ['AI Video', 'Midjourney', 'Veo'],
+      'An IP expansion of the "buddy" mascot from my Antigravity Bot project, bringing the pixel character to life through vibrant merchandising and emotes.',
+    stack: ['Pixel Art', 'Character Design', 'Merchandising'],
+    image: rainbowByteImg,
+    tags: ['Pixel Art', 'Mascot', 'Branding', 'Plush Design'],
     concept:
-      'Investigating how AI can interpret complex fashion textures like silk and lace in motion.',
+      'Translating a digital companion into a tangible brand. Rainbow Byte takes the core identity of Antigravity Bot and expands it into a playful, standalone IP.',
     workflow:
-      'Prompt engineering in Midjourney v6 to establish the visual key, followed by motion synthesis in Veo.',
-    useCase: 'Prototyping digital advertising for luxury brands.',
+      'Character evolution from UI mascot to a fully realized IP, including comprehensive expression sheets, turnaround designs, and physical product prototyping.',
+    useCase: 'Plush toys, keychains, digital emote packs, and lifestyle merchandising.',
     zh: {
-      title: '电影级 AI 电影时尚探索',
-      subtitle: 'AI 视频生成',
-      description: '探索由 AI 生成的高级时尚美学与材质纹理的电影级视觉呈现。',
-      concept: '研究 AI 如何在动态影像中精准诠释丝绸与蕾丝等复杂时尚材质。',
-      workflow: '使用 Midjourney v6 确立视觉基调，随后通过 Google Veo 进行动态合成。',
-      useCase: '为奢侈品牌原型设计数字广告创意。'
+      title: '彩虹小比特 (Rainbow Byte)',
+      subtitle: 'IP 形象设计',
+      description: '基于我的 Antigravity Bot 项目中的 "buddy" 助手形象衍生的独立 IP，通过丰富的文创周边和表情包赋予像素角色全新的生命力。',
+      concept: '将数字伴侣转化为实体品牌。Rainbow Byte 提取了 Antigravity Bot 的核心视觉基因，将其扩展为一个充满趣味的独立 IP。',
+      workflow: '从 UI 界面吉祥物到成熟 IP 的角色演进，涵盖全套表情包绘制、三视图设计以及实体文创产品的打样与转化。',
+      useCase: '毛绒公仔、亚克力挂件、数字表情包及生活方式周边产品。'
     }
   },
   {
-    id: 'veo3-cinema',
+    id: 'english-learning-cards',
     category: 'design',
-    kind: 'ai-visual',
-    title: 'Cinematic Fragments',
-    subtitle: 'Veo3',
+    kind: 'case-study',
+    title: 'Visual English Flashcards',
+    subtitle: 'UI/UX & Education',
     description:
-      'AI-generated cinematic stills exploring narrative through motion and light.',
-    stack: ['Google Veo3'],
-    intent:
-      'Investigating whether text-to-video models can produce stills with genuine cinematic grammar — composition, lighting ratios, and implied motion.',
+      'IMAGE-2: Visually engaging educational flashcards combining vivid imagery and typography to enhance memory retention.',
+    stack: ['UI Design', 'Illustration', 'Typography'],
+    image: englishImg,
+    tags: ['Education', 'UI/UX', 'Flashcards', 'Visual Design'],
+    concept:
+      'Transforming mundane vocabulary learning into a delightful visual experience through strong mnemonic associations.',
     workflow:
-      'Narrative storyboarding → Prompt scripting with camera direction cues → Veo3 generation → Frame extraction → Color grading.',
-    toolsUsed: ['Google Veo3', 'DaVinci Resolve', 'After Effects'],
+      'Information architecture mapping, establishing a consistent visual language, grid layout design, and batch illustration processing.',
+    useCase: 'Educational apps, language learning platforms, and digital or physical flashcard decks.',
     zh: {
-      title: '影像碎片',
-      subtitle: 'Veo3 电影感测试',
-      description: '通过动态与光影探索叙事的 AI 生成电影级剧照。',
-      intent: '研究文本到视频模型是否能生成具有真正电影语法的静态帧——包括构图、光影比例和隐含运动。',
-      workflow: '叙事分镜 → 带有摄像机机位提示的提示词编写 → Veo3 生成 → 帧提取 → 色彩调优。'
+      title: 'IMAGE-2 英语学习卡片',
+      subtitle: 'UI/UX 教育产品设计',
+      description: 'IMAGE-2: 充满视觉吸引力的教育学习卡片，将生动的插图与精美的排版相结合，从而增强用户的记忆力。',
+      concept: '通过强有力的视觉记忆联想，将原本枯燥的词汇学习过程转化为令人愉悦的视觉体验。',
+      workflow: '信息架构梳理、建立一致的视觉语言规范、网格布局设计，以及批量插画资源的优化处理。',
+      useCase: '教育类应用程序、语言学习平台，以及数字或实体学习闪卡。'
     }
   },
   {
@@ -213,29 +220,28 @@ export const designProjects: Project[] = [
     }
   },
   {
-    id: 'neural-sketch',
+    id: 'apocalyptic-behemoth-ip',
     category: 'design',
-    kind: 'ai-visual',
-    title: 'Neural Sketch: Humanoid Synthesis',
-    subtitle: 'Fine Art',
+    kind: 'case-study',
+    title: 'Apocalyptic Behemoth: IP Concept',
+    subtitle: 'Character Design & 2D Animation',
     description:
-      'An exploration of the boundary between traditional hand-drawn line art and generative abstraction, creating complex living wireframes.',
-    stack: ['Nano Banana', 'Fine Art', 'Generative AI'],
-    image: neuralSketchImg,
-    tags: ['Fine Art', 'Nano Banana', 'Minimalism', 'Line Art'],
+      'An original apocalyptic behemoth character concept, designed for 2D animation, featuring intricate organic armor and imposing scale.',
+    stack: ['Clip Studio Paint', 'Photoshop', '2D Illustration'],
+    image: apocalypticBehemothImg,
+    tags: ['Animation', 'Character Design', 'Creature Concept', '2D Art'],
     concept:
-      'Replicating the raw, spontaneous energy of a master artist\'s sketchpad by utilizing Nano Banana\'s line-weight capabilities to balance anatomical precision with chaotic, explosive geometry.',
+      'Exploring the terrifying beauty of post-apocalyptic apex predators through sharp silhouettes and bio-mechanical aesthetics.',
     workflow:
-      'Style anchoring via Nano Banana for stroke pressure and ink density, abstract compositional clustering of humanoid silhouettes, and organic imperfection injection to simulate charcoal and graphite textures.',
-    useCase:
-      'Digital art installations, editorial illustrations for tech-philosophy journals, or experimental UI backgrounds for minimalist creative platforms.',
+      'Initial rough sketching and silhouette blocking, followed by detailed line art and layered digital painting in professional 2D illustration software.',
+    useCase: 'Concept art for animated series, video game boss design, and collectible art prints.',
     zh: {
-      title: '神经素描：人形合成',
-      subtitle: '美术与生成艺术',
-      description: '探索传统手绘线稿与生成式抽象艺术之间的边界，创造出复杂的生命力线框。',
-      concept: '利用 Nano Banana 的线条权重能力，在解剖学精度与混沌几何中取得平衡，复现艺术大师速写本上原始且自发的能量。',
-      workflow: '通过 Nano Banana 锚定笔触压力和墨水密度风格，对人形剪影进行抽象重组，并注入有机的不完美感以模拟木炭和石墨纹理。',
-      useCase: '数字艺术装置、科技哲学期刊的社论插图，或面向极简创意平台的实验性 UI 背景。'
+      title: '末日巨兽：动画 IP 设定',
+      subtitle: '角色设计与 2D 插画',
+      description: '原创的末日巨兽角色设定，专为动画制作设计，具有错综复杂的有机生物装甲和极具压迫感的体型。',
+      concept: '通过凌厉的剪影与生物机械美学，探索末日世界顶级掠食者的恐怖之美。',
+      workflow: '使用 2D 绘图软件进行初期草图绘制、剪影构建、精细线稿刻画以及分层数字上色。',
+      useCase: '动画剧集概念设计、电子游戏 Boss 设定以及艺术收藏版画。'
     }
   },
 ]
