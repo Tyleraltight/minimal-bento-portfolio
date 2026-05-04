@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import { motion, AnimateSharedLayout } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useLanguage } from '../contexts/LanguageContext'
 import { Magnetic } from './ui/Magnetic'
 
