@@ -48,14 +48,14 @@ export const engineeringProjects: Project[] = [
     title: 'EasyNote',
     subtitle: 'Minimalist Productivity Hub',
     description:
-      'A minimalist productivity hub combining annual goal (Flag) tracking, rapid note-taking, and calendar retrospection, featuring real-time multi-device sync via Supabase.',
+      'A minimal goal-tracking & note-taking PWA with Supabase cloud sync, offline-first design, and seamless cross-device experience.',
     stack: ['React', 'Supabase', 'TypeScript', 'Tailwind'],
     href: 'https://github.com/Tyleraltight/EasyNote',
     image: easyNoteImg,
     zh: {
       title: 'EasyNote',
       subtitle: '极简生产力枢纽',
-      description: '一个结合年度目标(Flag)追踪、快速笔记与日历回顾的极简生产力工具，通过 Supabase 实现实时多端同步。'
+      description: '一个结合极简目标追踪与笔记功能的 PWA 应用，具备 Supabase 云同步、优先离线设计以及无缝跨端体验。'
     }
   },
   {
@@ -65,14 +65,14 @@ export const engineeringProjects: Project[] = [
     title: 'ParentsHandbook',
     subtitle: 'LLM-powered Movie Audit',
     description:
-      'An LLM-based movie content audit tool providing parents with visual content risk assessments across four dimensions: Sex & Nudity, Violence, Profanity, and Frightening scenes.',
+      'An LLM-powered NSFW content audit tool that evaluates movies across five dimensions — sex, violence, gore, profanity, and substance use — with structured risk scoring via Gemini.',
     stack: ['FastAPI', 'Gemini', 'Redis', 'Vercel'],
     href: 'https://github.com/Tyleraltight/ParentsHandbook',
     image: parentsHandbookImg,
     zh: {
       title: 'ParentsHandbook',
       subtitle: '大语言模型电影内容审计',
-      description: '基于LLM的电影内容审计工具，为家长提供四个维度的视觉内容风险评估：色情裸露、暴力、脏话以及惊悚画面。'
+      description: '基于大语言模型的成人内容审计工具，通过 Gemini 生成结构化风险评分，从五个维度（色情、暴力、血腥、脏话及药物滥用）评估电影内容。'
     }
   },
   {
@@ -82,14 +82,14 @@ export const engineeringProjects: Project[] = [
     title: 'Spotify Analysis',
     subtitle: 'Data Visualization',
     description:
-      'Translating user streaming habits into actionable insights through Python and interactive data visualization.',
+      "An interactive data visualization dashboard for Spotify's audio catalog, featuring K-Means clustering and multi-dimensional analysis via Streamlit & Plotly.",
     stack: ['Python', 'Streamlit', 'Plotly', 'Pandas'],
     href: 'https://github.com/Tyleraltight/Spotify-Analysis',
     image: dashboardImg,
     zh: {
       title: 'Spotify 数据分析',
       subtitle: '交互式数据可视化',
-      description: '通过 Python 和交互式数据可视化技术，将用户的流媒体播放习惯转化为直观的数据洞察。'
+      description: '专为 Spotify 音频目录打造的交互式数据可视化仪表盘，利用 Streamlit 和 Plotly 实现 K-Means 聚类与多维度数据分析。'
     }
   },
   {
@@ -99,14 +99,14 @@ export const engineeringProjects: Project[] = [
     title: 'Antigravity Buddy',
     subtitle: 'AI Desktop Companion',
     description:
-      'A desktop AI companion app featuring a floating robot assistant with natural language interaction, built with Electron and modern AI APIs.',
+      'A desktop AI agent status companion for Google Antigravity, featuring Dynamic Island-style animations and real-time workflow state visualization, built with Rust (Tauri).',
     stack: ['Rust', 'CSS', 'TypeScript', 'Node.js'],
     href: 'https://github.com/Tyleraltight/antigravity-buddy',
     image: antigravityBuddyImg,
     zh: {
       title: '反重力机器人',
       subtitle: 'AI 桌面助手',
-      description: '一个桌面 AI 伴侣应用，具有支持自然语言交互的悬浮机器人助手，基于 Electron 和现代 AI API 构建。'
+      description: '为 Google Antigravity 打造的桌面端 AI 智能体状态伴侣，拥有类似灵动岛的动画效果及实时的完整工作流状态可视化，基于 Rust (Tauri) 开发。'
     }
   },
   {

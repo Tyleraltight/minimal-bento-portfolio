@@ -108,25 +108,13 @@ export function FeaturedProjectsSection() {
     <Section
       id="work"
       title={language === 'zh' ? '精选作品' : 'Featured work'}
-      subtitle={language === 'zh' ? '部分项目展示' : 'Selected projects'}
       className="projects-section"
     >
       <Container>
-        {/* Row 1 — Engineering (2x2 grid, first 4 projects) */}
-        <div className="projects-row projects-row--engineering">
-          {engineeringProjects.slice(0, 4).map((project) =>
-            project.kind === 'coming-soon' ? (
-              <ComingSoonCard key={project.id} />
-            ) : (
-              <ProjectCard key={project.id} project={project} showImage />
-            )
-          )}
-        </div>
-
-        {/* Row 2 — 5th project (1x2 grid) */}
-        {engineeringProjects.length > 4 && (
-          <div className="projects-row projects-row--engineering" style={{ marginTop: '1.6rem' }}>
-            {engineeringProjects.slice(4).map((project) =>
+        {/* Engineering Projects */}
+        <div id="engineering-projects" style={{ scrollMarginTop: '100px' }}>
+          <div className="projects-row projects-row--engineering">
+            {engineeringProjects.slice(0, 4).map((project) =>
               project.kind === 'coming-soon' ? (
                 <ComingSoonCard key={project.id} />
               ) : (
@@ -134,60 +122,69 @@ export function FeaturedProjectsSection() {
               )
             )}
           </div>
-        )}
 
-        {/* Row 2 — Design & AI Visuals (4 columns) */}
-        <div className="projects-row-label">
-          <MetaText>{language === 'zh' ? '设计与 AI 视觉' : 'Design & AI Visuals'}</MetaText>
-        </div>
-        <div className="projects-row projects-row--design">
-          {designProjects.map((project) => (
-            <div
-              key={project.id}
-              className="bento-card bento-card--interactive project-card project-card--visual"
-              onClick={() => setSelectedProject(project)}
-              onMouseEnter={() => project.videoUrl && handleCardEnter(project.id)}
-              onMouseLeave={() => project.videoUrl && handleCardLeave(project.id)}
-            >
-              {/* Media slot — video or image placeholder */}
-              <div className="visual-card-image-slot">
-                {project.videoUrl ? (
-                  <>
-                    <video
-                      ref={(el) => { videoRefs.current[project.id] = el }}
-                      src={project.videoUrl}
-                      className="visual-card-video"
-                      muted
-                      loop
-                      playsInline
-                      preload="metadata"
-                      style={{
-                        opacity: hoveredId === project.id ? 1 : 0.85,
-                        transition: 'opacity 0.3s ease-out',
-                      }}
-                    />
-                    <span className="visual-card-view-badge">View ↗</span>
-                  </>
-                ) : project.image ? (
-                  <>
-                    <img src={project.image} alt={project.title} className="visual-card-image" />
-                    <span className="visual-card-view-badge">View ↗</span>
-                  </>
+          {engineeringProjects.length > 4 && (
+            <div className="projects-row projects-row--engineering" style={{ marginTop: '1.6rem' }}>
+              {engineeringProjects.slice(4).map((project) =>
+                project.kind === 'coming-soon' ? (
+                  <ComingSoonCard key={project.id} />
                 ) : (
-                  <span className="visual-card-placeholder-text">Drop image here</span>
-                )}
-              </div>
-              <div className="project-card-body">
-                <MetaText>{language === 'zh' && project.zh?.subtitle ? project.zh.subtitle : project.subtitle}</MetaText>
-                <Subheading>{language === 'zh' && project.zh?.title ? project.zh.title : project.title}</Subheading>
-                <Body>{language === 'zh' && project.zh?.description ? project.zh.description : project.description}</Body>
-              </div>
+                  <ProjectCard key={project.id} project={project} showImage />
+                )
+              )}
             </div>
-          ))}
+          )}
+        </div>
+
+        {/* Design & AI Visuals */}
+        <div id="design-visuals" style={{ scrollMarginTop: '100px', marginTop: '5rem' }}>
+          <div className="projects-row projects-row--design">
+            {designProjects.map((project) => (
+              <div
+                key={project.id}
+                className="bento-card bento-card--interactive project-card project-card--visual"
+                onClick={() => setSelectedProject(project)}
+                onMouseEnter={() => project.videoUrl && handleCardEnter(project.id)}
+                onMouseLeave={() => project.videoUrl && handleCardLeave(project.id)}
+              >
+                <div className="visual-card-image-slot">
+                  {project.videoUrl ? (
+                    <>
+                      <video
+                        ref={(el) => { videoRefs.current[project.id] = el }}
+                        src={project.videoUrl}
+                        className="visual-card-video"
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        style={{
+                          opacity: hoveredId === project.id ? 1 : 0.85,
+                          transition: 'opacity 0.3s ease-out',
+                        }}
+                      />
+                      <span className="visual-card-view-badge">View ↗</span>
+                    </>
+                  ) : project.image ? (
+                    <>
+                      <img src={project.image} alt={project.title} className="visual-card-image" />
+                      <span className="visual-card-view-badge">View ↗</span>
+                    </>
+                  ) : (
+                    <span className="visual-card-placeholder-text">Drop image here</span>
+                  )}
+                </div>
+                <div className="project-card-body">
+                  <MetaText>{language === 'zh' && project.zh?.subtitle ? project.zh.subtitle : project.subtitle}</MetaText>
+                  <Subheading>{language === 'zh' && project.zh?.title ? project.zh.title : project.title}</Subheading>
+                  <Body>{language === 'zh' && project.zh?.description ? project.zh.description : project.description}</Body>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </Container>
 
-      {/* Detail Modal */}
       <AnimatePresence>
         {selectedProject && (
           <ProjectDetailModal

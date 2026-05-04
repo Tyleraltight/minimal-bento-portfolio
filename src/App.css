@@ -1,7 +1,11 @@
 .app-root {
   display: flex;
   justify-content: center;
-  padding: 4.5rem 1.75rem 5rem;
+  padding: 4.5rem 1.5rem 5rem;
+}
+
+.app-left-sidebar, .app-right-sidebar {
+  display: none; /* Hide sidebars on smaller screens */
 }
 
 .app-shell {
@@ -11,6 +15,38 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  min-width: 0;
+}
+
+@media (min-width: 1440px) {
+  .app-root {
+    display: grid;
+    grid-template-columns: 220px 1fr 60px;
+    padding: 4.5rem 0 5rem 0;
+    /* stretch so left column is as tall as content, enabling sticky */
+    align-items: stretch;
+  }
+
+  .app-left-sidebar {
+    /* Centers TOC horizontally in the 220px column */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    grid-column: 1;
+  }
+
+  .app-shell {
+    grid-column: 2;
+    width: 95%; /* Shrunk by 5% as requested */
+    max-width: none;
+    /* 5% leftover width: put 1% on the left, 4% on the right to shift it slightly left */
+    margin: 0 4% 0 1%; 
+  }
+
+  .app-right-sidebar {
+    display: block;
+    grid-column: 3;
+  }
 }
 
 .app-header {
@@ -515,6 +551,146 @@
 .about-lang-level {
   font-weight: 700;
   color: #0f172a;
+}
+
+/* ── Premium TOC (sticky, lives inside grid left column) ── */
+.premium-toc {
+  /* sticky within the left column — impossible to overlap content */
+  position: sticky;
+  top: 35vh;
+  /* NO left/transform needed — parent flex handles horizontal centering */
+  z-index: 100;
+  display: none; /* hidden on small screens and when grid is inactive */
+  
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 28px;
+  box-shadow: 
+    0 4px 24px -4px rgba(15, 23, 42, 0.04),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  padding: 1.5rem;
+}
+
+@media (min-width: 1440px) {
+  .premium-toc {
+    display: flex;
+  }
+}
+
+.premium-toc-header {
+  margin-bottom: 1.2rem;
+  padding-left: 0.5rem;
+}
+
+.premium-toc-title {
+  font-size: 0.65rem;
+  font-weight: 750;
+  letter-spacing: 0.25em;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.premium-toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  position: relative;
+}
+
+/* Base Track */
+.premium-toc-track {
+  position: absolute;
+  left: 0.6rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: rgba(203, 213, 225, 0.4);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/* Animated Scroll Fill */
+.premium-toc-progress {
+  width: 100%;
+  height: 100%;
+  background: #0f172a;
+  transform-origin: top;
+  border-radius: 2px;
+}
+
+.premium-toc-item {
+  position: relative;
+  z-index: 2;
+}
+
+.premium-toc-item.is-parent {
+  margin-top: 0.2rem;
+}
+
+.premium-toc-item.is-sub {
+  margin-left: 1.25rem;
+}
+
+.premium-toc-btn {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0.5rem 1rem 0.5rem 1.75rem; /* space for track */
+  text-align: left;
+  font-size: 1rem; /* Increased from 0.88rem */
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: color 0.2s ease;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.premium-toc-item.is-sub .premium-toc-btn {
+  font-size: 0.9rem; /* Increased from 0.78rem */
+  padding: 0.4rem 1rem 0.4rem 1rem;
+}
+
+.premium-toc-btn:hover {
+  color: #334155;
+}
+
+.premium-toc-btn.active {
+  color: #0f172a;
+  font-weight: 650;
+}
+
+.premium-toc-text {
+  position: relative;
+  z-index: 2;
+  letter-spacing: 0.01em;
+}
+
+.premium-toc-active-bg {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 
+    0 4px 12px -2px rgba(15, 23, 42, 0.05),
+    0 0 0 1px rgba(226, 232, 240, 0.5);
+  z-index: 1;
+}
+
+.premium-toc-sub-dot {
+  position: absolute;
+  left: -1rem; /* Visually anchor it to the track */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #0f172a;
+  z-index: 2;
 }
 
 /* ── Two-Row Layout ── */

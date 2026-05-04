@@ -5,6 +5,7 @@ import { AboutSection } from './sections/AboutSection'
 import { StyledContactFooter } from './components/StyledContactFooter'
 import { BackToTop } from './components/ui/BackToTop'
 import { LanguageToggle } from './components/LanguageToggle'
+import { ProjectSidebarTOC } from './components/ProjectSidebarTOC'
 import { useLanguage } from './contexts/LanguageContext'
 
 function App() {
@@ -12,6 +13,10 @@ function App() {
 
   return (
     <div className="app-root">
+      <div className="app-left-sidebar">
+        <ProjectSidebarTOC />
+      </div>
+
       <main className="app-shell">
         <header className="app-header">
           <div className="app-logo">FOR WORK AND PROGRESS</div>
@@ -37,7 +42,9 @@ function App() {
         <StyledContactFooter />
       </main>
       
-      <BackToTop />
+      <div className="app-right-sidebar">
+        <BackToTop />
+      </div>
     </div>
   )
 }
