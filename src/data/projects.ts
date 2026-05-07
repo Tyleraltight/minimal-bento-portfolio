@@ -1,6 +1,6 @@
 import voxelImg from '../assets/LOGO.jpg'
 import parentsHandbookImg from '../assets/demo1.png'
-import dashboardImg from '../assets/dashboard_overview.jpg'
+import dashboardImg from '../assets/preview_top.png'
 import easyNoteImg from '../assets/mockup1.png'
 import antigravityBuddyImg from '../assets/alien-padded.png'
 import alineHeroImg from '../assets/aline-hero.png'
